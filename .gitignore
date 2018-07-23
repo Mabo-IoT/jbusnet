@@ -1,0 +1,21 @@
+## folders
+logs/
+build/
+dist/
+jbusnet.egg-info/
+__pycache__/
+
+## files
+*.pyc
+*.swp
+
+.coverage
+.vscode
+.idea
+.noseids
+*.db
+.idea/
+.tox/
+doc/api/epydoc/html/
+.vscode/
+.venv
