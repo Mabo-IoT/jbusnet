@@ -3,9 +3,11 @@ import time
 
 from abc import ABCMeta, abstractmethod
 
-from jbusnet.transition impor Transition
+from jbusnet.transition import Transition
+from jbusnet.request import Request
 
-__logger = logging.getLogger(__name__)
+
+_logger = logging.getLogger(__name__)
 
 
 class BaseClient(metaclass=ABCMeta):
@@ -31,9 +33,9 @@ class Client(BaseClient):
         read holding registers from jbus slave
         """
         # generate jbus request 
-        request = Request(fuction_code=3, unit=unit, address=address, length=length)
+        request = Request(function_code=3, unit=unit, address=address, length=length)
         
-        __logger.debug("Request is {}".format(request))
+        _logger.debug("Request is {}".format(request.bytes))
 
         # generate jbus response
         response = self.transition.execute(request)

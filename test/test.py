@@ -149,11 +149,6 @@ class TestSimulator(unittest.TestCase):
         self.assertEqual(len(res_bytes), length_number)
         
     
-    
-
-
-
-
 
 if __name__ == '__main__':
     suite = unittest.TestSuite()

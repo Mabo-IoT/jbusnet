@@ -6,7 +6,7 @@ from jbusnet.pdu import PDU
 
 from jbusnet.utils import connect_bytes, convert_int_bytes, calculate_crc
 
-__logger = logging.getLogger(__name__)
+_logger = logging.getLogger(__name__)
 
 
 class RequstBase(metaclass=ABCMeta):

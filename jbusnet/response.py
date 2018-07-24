@@ -5,7 +5,7 @@ import struct
 from abc import ABCMeta, abstractmethod
 from jbusnet.utils import calculate_crc
 
-__logger = logging.getLogger(__name__)
+_logger = logging.getLogger(__name__)
 
 
 class ResponseBase(metaclass=ABCMeta):

@@ -5,7 +5,7 @@ from abc import ABCMeta, abstractmethod
  
 from jbusnet.utils import  convert_int_bytes, connect_bytes
 
-__logger = logging.getLogger(__name__)
+_logger = logging.getLogger(__name__)
 
 
 

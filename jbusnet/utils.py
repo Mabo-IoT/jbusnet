@@ -3,7 +3,7 @@ import time
 
 from abc import ABCMeta, abstractmethod
 
-__logger = logging.getLogger(__name__)
+_logger = logging.getLogger(__name__)
 
 byte2int = lambda b: b
 

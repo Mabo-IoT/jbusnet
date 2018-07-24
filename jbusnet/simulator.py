@@ -1,8 +1,10 @@
 import logging
 import random
+import sys
 
-from socketserver import BaseRequestHandler, TCPServer
-from jbusnet.utils import connect_bytes, calculate_crc
+
+from socketserver import BaseRequestHandler, ThreadingTCPServer
+from utils import connect_bytes, calculate_crc
 
 class JbusHandler(BaseRequestHandler):
     def handle(self):
@@ -58,3 +60,6 @@ def generate_contents(length):
 
     return bytes_data
 
+if __name__ == '__main__':
+    serv = ThreadingTCPServer(('', 8001), JbusHandler)
+    serv.serve_forever()

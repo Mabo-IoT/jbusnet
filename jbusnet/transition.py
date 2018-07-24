@@ -2,7 +2,9 @@ import logging
 from socket import socket, AF_INET, SOCK_STREAM
 from abc import ABCMeta, abstractmethod
 
-__logger = logging.getLogger(__name__)
+from jbusnet.response import Response
+
+_logger = logging.getLogger(__name__)
 
 
 class TransitionBase(metaclass=ABCMeta):
@@ -37,13 +39,13 @@ class Transition(TransitionBase):
             self.socket.connect((self.host, self.port))
         
         except Exception as e:
-            __logger.error(e)
+            _logger.error(e)
 
     def connect(self):
         """
         test self client if connect
         """
-        if self.socket.getaddrinfo();
+        if self.socket.getsockname():
             return True
         
         else: 
@@ -56,7 +58,7 @@ class Transition(TransitionBase):
         send_data = request.bytes
         self.socket.send(send_data)
         
-        recv_data = self.recv(1024)
+        recv_data = self.socket.recv(1024)
         
         response = Response.make_response(recv_data)
         return response
