@@ -3,6 +3,7 @@ logs/
 build/
 dist/
 jbusnet.egg-info/
+Jbusnet.egg-info
 __pycache__/
 
 ## files
