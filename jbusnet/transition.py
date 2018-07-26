@@ -56,6 +56,8 @@ class Transition(TransitionBase):
         send request data to slave and wait for response
         """
         send_data = request.bytes
+
+        print("send data is {}".format(send_data))
         self.socket.send(send_data)
         
         recv_data = self.socket.recv(1024)

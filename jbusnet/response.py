@@ -43,20 +43,21 @@ class Response(ResponseBase):
         self.contents = contents
     
     @classmethod
-    def make_response(cls, bytes):
+    def make_response(cls, bytes_data):
         
-        unit = bytes[0:1]
-        function_code = bytes[1:2]
-        length = bytes[2:3]
-        contents = bytes[3:-2]
-        crc = bytes[-2:]
-        function_specific_data = bytes[:-2]        
+        print("response is {}".format(bytes_data))
+        unit = bytes_data[0:1]
+        function_code = bytes_data[1:2]
+        length = bytes_data[2:3]
+        contents = bytes_data[3:-2]
+        crc = bytes_data[-2:]
+        function_specific_data = bytes_data[:-2]        
 
         if cls.check_crc(function_specific_data, crc):
             return cls(unit, function_code, length, contents)
         
         else:
-            __logger.error("CRC  {} is unright".format(crc))
+            _logger.error("CRC  {} is unright".format(crc))
             raise Exception("CRC is unright please check recv data")
 
     @staticmethod
@@ -87,8 +88,11 @@ class Response(ResponseBase):
         return a list of contents
         """
         data = int(0)
-        length = data.from_bytes(self.length, 'big')
+        # length = data.from_bytes(self.length, 'big')
+        length = len(self.contents)
+        print("recv data length is {}".format(length))
         format = '!%dH'% (length/2)
+        # print(len(self.contents))
         registers_data =  struct.unpack(format, self.contents)
 
         return list(registers_data)

@@ -15,6 +15,10 @@ class BaseClient(metaclass=ABCMeta):
     def read_holding_registers():
         pass
     
+    @abstractmethod
+    def read_input_registers():
+        pass
+
 
 class Client(BaseClient):
     def __init__(self, host, port):
@@ -34,6 +38,19 @@ class Client(BaseClient):
         """
         # generate jbus request 
         request = Request(function_code=3, unit=unit, address=address, length=length)
+        
+        _logger.debug("Request is {}".format(request.bytes))
+
+        # generate jbus response
+        response = self.transition.execute(request)
+        return response
+    
+    def read_input_registers(self, unit, address, length):
+        """
+        read holding registers from jbus slave
+        """
+        # generate jbus request 
+        request = Request(function_code=4, unit=unit, address=address, length=length)
         
         _logger.debug("Request is {}".format(request.bytes))
 

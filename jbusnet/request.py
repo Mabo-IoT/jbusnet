@@ -29,6 +29,7 @@ class Request(RequstBase):
         convert request to bytes
         """
         bytes_data = connect_bytes(convert_int_bytes(self.unit, 1), self.pdu.bytes, self.CRC)
+        print(bytes_data)
         
         return bytes_data
 

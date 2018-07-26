@@ -6,7 +6,7 @@ import sys
 if sys.version_info[0] == 3 and sys.version_info[1] >= 5:
     setup(
         name='jbusnet',
-        version='0.1.0',
+        version='0.1.1',
         author='HeathKang',
         author_email='heath.kang@foxmail.com',
         description='A lib to parse Jbusnet protocol',
